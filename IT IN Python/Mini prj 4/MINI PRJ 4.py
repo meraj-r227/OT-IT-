@@ -10,8 +10,8 @@ from  colorama import Fore,Style,init
 init(autoreset=True)
 
 #1.
-OSname =  platform.uname()[0]
-print(Fore.RED+"[+]"+Fore.GREEN+OSname)
+osname =  platform.uname()[0]
+print(Fore.RED+"[+]"+Fore.GREEN+osname)
 
 #2.
 # How  can we   find  out  what  time  it is  on  their   pc  
@@ -28,3 +28,12 @@ print(Fore.RED+"[+]"+Fore.GREEN+time_zone)
 
 ip  =  requests.get("https://api.ipify.org/").text 
 print(Fore.RED+"[+]"+Fore.GREEN+ip)
+
+
+#4.  json
+victim_data = {"os-name":osname, "time-zone":time_zone, "client-ip":ip}
+# for  runnig  local  host  =====>
+#  first serch (php -S localhost:8000) on CMD 
+#  and  then  open  new  CMD    for  (python "MINI PRJ 4.py")
+# and  the  end  we  have a json  file  
+http = requests.post("http://localhost:8000/info.php", data=victim_data)
